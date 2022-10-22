@@ -1,6 +1,7 @@
 import React from "react";
-import '../style/Login.css'
-import login from '../../assets/login.svg'
+import "../style/Login.css";
+import login from "../../assets/login.svg";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -26,7 +27,7 @@ const Login = () => {
           </button>
 
           <div class="info">
-            Don't have an account? <a href="signup.html">Signup</a> instead.
+            Don't have an account? <Link to="/signup">Signup</Link> instead.
           </div>
         </form>
       </div>

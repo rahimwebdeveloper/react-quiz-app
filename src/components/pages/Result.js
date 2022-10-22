@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
+import Analysis from "../Analysis";
+import Summary from "../Summary";
 
 const Result = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <>
+      <Summary />
+      <Analysis />
+    </>
+  );
 };
 
 export default Result;
