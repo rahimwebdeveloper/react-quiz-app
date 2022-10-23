@@ -3,9 +3,9 @@ import "./style/textInput.css";
 
 const TextInput = ({icon, ...rest}) => {
   return (
-    <div class="textInput">
+    <div className="textInput">
       <input {...rest} />
-      <span class="material-icons-outlined"> {icon} </span>
+      <span className="material-icons-outlined"> {icon} </span>
     </div>
   );
 };

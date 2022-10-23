@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { useAuth } from "../../contexts/AuthContext";
 import "../style/Navbar.css";
 
 const Navbar = () => {
+  const { currentUser, SignOut } = useAuth();
+
   return (
     <nav className="nav">
       <ul>
@@ -14,13 +17,28 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
-      <div class="account">
-        <span class="material-icons-outlined" title="Account">
-          account_circle
-        </span>
-        <Link to="/signup">Signup</Link>
-        <Link to="/loin">Login</Link>
-        {/* <span class="material-icons-outlined" title="Logout"> logout </span>  */}
+      <div className="account">
+        {currentUser ? (
+          <>
+            <span className="material-icons-outlined" title="Account">
+              account_circle
+            </span>
+            <span>{currentUser?.displayName}</span>
+            <span
+              className="material-icons-outlined"
+              title="Logout"
+              onClick={SignOut}
+            >
+              {" "}
+              logout{" "}
+            </span>
+          </>
+        ) : (
+          <>
+            <Link to="/signup">Signup</Link>
+            <Link to="/login">Login</Link>
+          </>
+        )}
       </div>
     </nav>
   );

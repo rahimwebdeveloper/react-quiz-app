@@ -4,14 +4,14 @@ import "./style/Summary.css";
 
 const Summary = () => {
   return (
-    <div class="summary">
-      <div class="point">
-        <p class="score">
+    <div className="summary">
+      <div className="point">
+        <p className="score">
           Your score is <br />5 out of 10
         </p>
       </div>
 
-      <div class="badge">
+      <div className="badge">
         <img src={success} alt="Success" />
       </div>
     </div>
