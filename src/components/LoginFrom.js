@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import Button from "./Button";
 import Form from "./Form";
@@ -11,23 +11,30 @@ const LoginFrom = () => {
 
   const [error, setError] = useState("");
 
-  const { Login } = useAuth();
+  const { Login, currentUser } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-        setError("");
-        setLoading(true);
-        await Login(email, password,);
-        navigate("/");
-      } catch (err) {
-        console.log(err);
-        setLoading(false);
-        setError("Failed to create an account! ");
-      }
+      setError("");
+      setLoading(true);
+      await Login(email, password);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+      setError("Failed to create an account! ");
+    }
   };
+
+  if (currentUser) {
+    navigate(from, { replace: true });
+  }
 
   return (
     <Form className="login form" onSubmit={handleSubmit}>

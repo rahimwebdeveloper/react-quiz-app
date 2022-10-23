@@ -9,6 +9,7 @@ import Result from "./pages/Result";
 
 import "./style/App.css";
 import { AuthProvider } from "../contexts/AuthContext";
+import ProvideRoute from "../authentication/ProvideRoute";
 
 function App() {
   return (
@@ -21,8 +22,22 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/quiz" element={<Quiz />} />
-              <Route path="/result" element={<Result />} />
+              <Route
+                path="/quiz"
+                element={
+                  <ProvideRoute>
+                    <Quiz />
+                  </ProvideRoute>
+                }
+              />
+              <Route
+                path="/result"
+                element={
+                  <ProvideRoute>
+                    <Result />
+                  </ProvideRoute>
+                }
+              />
             </Routes>
           </div>
         </main>
